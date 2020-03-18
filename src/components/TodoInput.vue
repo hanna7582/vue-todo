@@ -1,7 +1,12 @@
 <template>
   <section class="input-box shadow">
-    <input type="text" v-model="newTodoItem" @keyup.enter="addTodo" @keyup="typingCheck">
-    <button class="btn-add" @click="addTodo"><font-awesome-icon icon="plus" /></button>    
+    <input type="text" 
+          v-model="newTodoItem" 
+          @keyup.enter="addTodo" 
+          @keyup="typingCheck">
+    <button class="btn-add" @click="addTodo">
+      <font-awesome-icon icon="plus" />
+    </button>    
     <Modal v-if="showModal" @modalClose="showModal=false">      
         <h3 slot="header">Message</h3>
         <div slot="body">Todo empty.</div>         

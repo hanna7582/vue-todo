@@ -14,8 +14,6 @@
     <TodoFooter :todoList="todoList" 
               @removeAll="removeAll"
               @removeCompleted="removeCompleted"/>    
-    <!-- <ImageTest @shuffle="shuffle" :items="items"/> -->
-    <!-- <LifeCycle /> -->
   </div>
 </template>
 
@@ -24,8 +22,6 @@ import TodoHeader from './components/TodoHeader.vue';
 import TodoInput from './components/TodoInput.vue';
 import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
-// import ImageTest from './components/ImageTest.vue';
-// import LifeCycle from './components/LifeCycle';
 
 import _ from 'lodash';
 
@@ -36,15 +32,12 @@ export default {
     TodoInput, 
     TodoList, 
     TodoFooter,
-    // ImageTest,
-    // LifeCycle
   },
   data() {
     return {
       todoList:[],
       theme:'',
       allDone: false,     
-      // items: [1,2,3,4,5,6,7,8,9],
     }
   }, 
   created() {
@@ -123,7 +116,6 @@ export default {
     },    
     shuffle: function () {
       this.todoList = _.shuffle(this.todoList)
-      this.items = _.shuffle(this.items)
     },
     allDoneChange(allDone) {
       this.allDone = allDone;

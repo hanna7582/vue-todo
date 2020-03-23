@@ -18,23 +18,26 @@
       <button :class="{on:visibility == 'all'}" @click="filters('all')">All</button>
       <button :class="{on:visibility == 'active'}" @click="filters('active')">Active</button>
       <button :class="{on:visibility == 'completed'}" @click="filters('completed')">Completed</button>
-    </div>   
-    <transition-group name="list" tag="ul">           
-      <li v-for="todo in filteredTodoList" :key="todo.id" :class="{ completed: todo.completed }">
-        <label>
-          <input type="checkbox" 
-            @change="checkCompleted({mode:'one',id:todo.id})" 
-            :checked="todo.completed" 
-            :value="todo.item" >
-          <i class="fas" 
-            :class="{'fa-square':!todo.completed,'fa-check-square':todo.completed}"></i>
-        </label>
-        <span @click="todoDetailModal(todo)">{{todo.item}}</span>
-        <button @click="removeTodo(todo.id)"><font-awesome-icon icon="trash" /></button>
-      </li>      
-      <li class="no-list" v-if="todoList.length==0" :key="0">할일을 입력하세요.</li>
-    </transition-group>
-    
+    </div>  
+
+    <div class="list">
+      <transition-group name="list" tag="ul">           
+        <li v-for="todo in filteredTodoList" :key="todo.id" :class="{ completed: todo.completed }">
+          <label>
+            <input type="checkbox" 
+              @change="checkCompleted({mode:'one',id:todo.id})" 
+              :checked="todo.completed" 
+              :value="todo.item" >
+            <i class="fas" 
+              :class="{'fa-square':!todo.completed,'fa-check-square':todo.completed}"></i>
+          </label>
+          <span @click="todoDetailModal(todo)">{{todo.item}}</span>
+          <button @click="removeTodo(todo.id)"><font-awesome-icon icon="trash" /></button>
+        </li>      
+      </transition-group>
+      <div class="no-list" v-if="todoList.length==0">할일을 입력하세요.</div>
+    </div>
+
     <Modal v-if="showModal" @modalClose="showModal=false"> 
       <h3 slot="header">Todo Detail</h3>
       <div slot="body">{{todoDetail}}</div>       
@@ -172,10 +175,10 @@ export default {
   }
   .no-list{
     display: block;
+    line-height: 50px;
     text-align: center;
   }
-
-  ul{
+  .list{
     overflow: auto;
     height: calc(100vh - 265px);
     margin-top: 10px;

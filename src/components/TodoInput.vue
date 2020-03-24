@@ -5,7 +5,7 @@
           @keyup.enter="addTodo" 
           @keyup="typingCheck">
     <button class="btn-add" @click="addTodo">
-      <font-awesome-icon icon="plus" />
+      <font-awesome-icon icon="plus" :spin="spin" />
     </button>    
     <Modal v-if="showModal" @modalClose="showModal=false">      
         <h3 slot="header">Message</h3>
